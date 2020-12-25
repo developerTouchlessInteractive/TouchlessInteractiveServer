@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  main:
+    container_name: main
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: npm run start:dev
+    env_file:
+      - .env
+    networks:
+      - webnet
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    networks:
+      - webnet
+    ports:
+      - 27017:27017
+networks:
+  webnet:
+
