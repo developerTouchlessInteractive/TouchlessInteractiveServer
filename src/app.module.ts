@@ -10,9 +10,9 @@ import { ConfigModule } from '@nestjs/config/dist/config.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://tiadmin:y7amkt6qEsGkRpNJ@tidevcluster.r7h3i.mongodb.net/flow?retryWrites=true&w=majority', { connectionName: 'flow', useNewUrlParser: true }),
-    MongooseModule.forRoot('mongodb+srv://tiadmin:y7amkt6qEsGkRpNJ@tidevcluster.r7h3i.mongodb.net/interact?retryWrites=true&w=majority', { connectionName: 'interact', useNewUrlParser: true }),
-    MongooseModule.forRoot('mongodb+srv://tiadmin:y7amkt6qEsGkRpNJ@tidevcluster.r7h3i.mongodb.net/sessions?retryWrites=true&w=majority', { connectionName: 'sessions', useNewUrlParser: true }),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/flow', { connectionName: 'flow' }),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/interact', { connectionName: 'interact' }),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/sessions', { connectionName: 'sessions' }),
     FlowModule,
     LoggerModule,
     GlobalModule,
