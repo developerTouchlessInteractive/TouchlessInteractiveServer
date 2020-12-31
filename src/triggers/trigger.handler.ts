@@ -1,4 +1,4 @@
-import { FlowDetails, FlowState, TaskOrder, StageState, TaskState } from "ezsign-client";
+import { FlowDetails, FlowState, TaskOrder, StageState, TaskState } from "ti-framework";
 import { FlowdbService } from "src/flow/flowdb/flowdb.service";
 import * as shortid from 'shortid'
 

@@ -1,4 +1,4 @@
-import { EndPoint, ResponseData, CustomerEvent, ServerEvent, ClientEvent } from "ezsign-client";
+import { EndPoint, ResponseData, CustomerEvent, ServerEvent, ClientEvent } from "ti-framework";
 import { FlowManager } from "./flowmanager";
 import { FlowEventHandler, NotifyFlowEvent } from "./ti.interface";
 import { LogService } from "./logger/logger.service";

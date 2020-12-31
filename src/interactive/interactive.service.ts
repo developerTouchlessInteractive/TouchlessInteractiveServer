@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CommunicationData } from 'ezsign-client';
+import { CommunicationData } from 'ti-framework';
 import { Model } from 'mongoose';
 import { LogService } from '../logger/logger.service';
 import { CommunicationStructure } from './communication.structure';

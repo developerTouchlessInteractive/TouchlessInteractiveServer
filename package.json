@@ -34,7 +34,6 @@
     "@types/socketio-wildcard": "^2.0.3",
     "axios": "^0.19.2",
     "crypto-random-string": "^3.3.0",
-    "ezsign-client": "0.0.175",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "mongoose": "^5.9.27",
@@ -45,6 +44,7 @@
     "shortid": "^2.2.15",
     "socketio-wildcard": "^2.0.0",
     "swagger-ui-express": "^4.1.4",
+    "ti-framework": "^0.1.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {

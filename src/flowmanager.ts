@@ -11,8 +11,8 @@ import { SessiondbService } from "./flow/sessiondb/sessiondb.service"
 import { FlowEventProcessor } from "./flowevent.processor"
 import { InteractDataProcessor } from "./interactdata.processor"
 import { TiTriggerHandler, TriggerHandlerFactory } from "./triggers/trigger.handler"
-import { ServerEvent, CustomerEvent, ClientEvent, DataType, EndPoint, ResponseData, Route } from "ezsign-client"
-import { CommunicationData, FlowDetails } from "ezsign-client"
+import { ServerEvent, CustomerEvent, ClientEvent, DataType, EndPoint, ResponseData, Route } from "ti-framework"
+import { CommunicationData, FlowDetails } from "ti-framework"
 
 export class FlowManager implements SessionInterface, PostalListeners {
     private readonly TAG = "FlowManager"

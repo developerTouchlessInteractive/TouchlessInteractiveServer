@@ -1,6 +1,6 @@
 
-import { CommunicationData, comm_events } from "ezsign-client";
-import { ServerEvent, CustomerEvent, ClientEvent, ResponseData } from "ezsign-client";
+import { CommunicationData, comm_events } from "ti-framework";
+import { ServerEvent, CustomerEvent, ClientEvent, ResponseData } from "ti-framework";
 import { FlowManager } from "./flowmanager";
 
 export interface PostalListeners {

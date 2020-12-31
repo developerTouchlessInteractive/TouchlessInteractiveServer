@@ -5,7 +5,7 @@ import { Socket } from 'socket.io';
 import * as postal from 'postal'
 import * as shortid from 'shortid'
 import { UtilService } from '../util/util.service';
-import { ServerEvent, EndPoint, ResponseData } from 'ezsign-client';
+import { ServerEvent, EndPoint, ResponseData } from 'ti-framework';
 
 @WebSocketGateway()
 export class FlowserverGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {

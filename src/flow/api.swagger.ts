@@ -1,4 +1,4 @@
-import { UserAction, UserInput } from "ezsign-client";
+import { UserAction, UserInput } from "ti-framework";
 import { ApiProperty } from '@nestjs/swagger';
 
 /** 

@@ -1,8 +1,8 @@
-import { Route, CommunicationData } from 'ezsign-client'
+import { Route, CommunicationData } from 'ti-framework'
 import * as mongoose from 'mongoose'
-import { Schema } from 'mongoose'  
+import { Schema } from 'mongoose'
 
-export const CommunicationStructure = new mongoose.Schema({ 
+export const CommunicationStructure = new mongoose.Schema({
     time: Number,
     type: String,
     data: Schema.Types.Mixed,
@@ -12,7 +12,7 @@ export const CommunicationStructure = new mongoose.Schema({
 })
 
 
-export interface CommunicationStructure extends mongoose.Document { 
+export interface CommunicationStructure extends mongoose.Document {
     targetChannel: String,
     communicationData: CommunicationData,
     time: number,

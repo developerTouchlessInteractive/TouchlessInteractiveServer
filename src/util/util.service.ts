@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ServerEvent, CustomerEvent, ClientEvent, DataType, EndPoint, ResponseData, Route } from 'ezsign-client';
+import { ServerEvent, CustomerEvent, ClientEvent, DataType, EndPoint, ResponseData, Route } from 'ti-framework';
 import * as shortid from 'shortid'
 
 @Injectable()

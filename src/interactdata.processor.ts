@@ -1,4 +1,4 @@
-import { CommunicationData, comm_events } from "ezsign-client";
+import { CommunicationData, comm_events } from "ti-framework";
 import { FlowManager } from "./flowmanager";
 import { LogService } from "./logger/logger.service";
 import { InteractDataHandler, NotifyInteractionData } from "./ti.interface";

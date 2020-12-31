@@ -4,8 +4,8 @@ import { LogService } from '../logger/logger.service';
 import * as shortid from 'shortid'
 import { InteractiveService } from './interactive.service';
 import * as postal from 'postal'
-import { DataType, EndPoint, Route, CommunicationData } from 'ezsign-client';
-import { ClientInteractEvent, CustomerInteractEvent, ServerInteractEvent } from 'ezsign-client'
+import { DataType, EndPoint, Route, CommunicationData } from 'ti-framework';
+import { ClientInteractEvent, CustomerInteractEvent, ServerInteractEvent } from 'ti-framework'
 
 @WebSocketGateway(80, { namespace: 'interact' })
 export class InteractiveGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {

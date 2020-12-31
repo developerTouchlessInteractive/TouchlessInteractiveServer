@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose'
-import { UserAction, UserInput } from 'ezsign-client'
+import { UserAction, UserInput } from 'ti-framework'
 
 export const TaskStructure = new mongoose.Schema({
     _id: String,

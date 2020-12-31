@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { LogService } from '../../logger/logger.service';
 import { SessionStructure } from '../sessionstructure.model';
 import cryptoRandomString = require('crypto-random-string');
-import { CommunicationData, FlowState, ResponseData } from 'ezsign-client';
+import { CommunicationData, FlowState, ResponseData } from 'ti-framework';
 import * as _ from 'lodash'
 
 @Injectable()

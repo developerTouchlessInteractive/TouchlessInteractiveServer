@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { FlowDetails, FlowState } from 'ezsign-client';
+import { FlowDetails, FlowState } from 'ti-framework';
 import { FlowdbService } from '../flow/flowdb/flowdb.service';
 import { TiTriggerHandler, TriggerHandlerFactory } from './trigger.handler';
 import { getConnectionToken, getModelToken, MongooseModule } from '@nestjs/mongoose';
