@@ -34,7 +34,7 @@ export class StagedbService {
             if (stage != null) {
                 const tasks = await this.getTasksForStage(stage.tasks) //tasks for each stage
                 this.logserv.logm('stages', tasks)
-                const result = { ...stage.toJSON(), tasks }
+                const result = { ...stage, tasks }
                 return result
             }
         } catch (error) {
