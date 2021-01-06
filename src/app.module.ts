@@ -23,7 +23,7 @@ import { join } from 'lodash';
     }),
     GraphQLModule.forRoot({
       include: [FlowModule], //limits resolver search to these modules
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile:'src/schema.gql',
       sortSchema: true,
       debug: true,
       playground: true
