@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  """creates a task and returns the response"""
+  createTask(
+    """task to be created"""
+    task: TaskInput!
+  ): Task!
+}
+
+type Query {
+  """all the tasks list"""
+  getAllTasks: [Task!]!
+
+  """task for the provided ID"""
+  getTaskById(id: String!): Task!
+}
+
+type Task {
+  _id: String!
+  controllerName: String!
+  createdDate: String!
+  name: String!
+  resource: String
+  UserAction: String
+  userInput: String
+}
+
+input TaskInput {
+  _id: String!
+  controllerName: String!
+  createdDate: String
+  name: String!
+  resource: String
+  UserAction: String
+  userInput: String
+}
