@@ -62,6 +62,14 @@ export class StagedbService {
         }
     }
 
+    async getAllStagesWithTasksControllerName(id:string): Promise<StageStructure[]> {
+        try {
+            return await this.stagemodel.find({"tasks.controllerName" :id})
+        } catch (error) {
+            this.logserv.logm('cant find stages', error)
+        }
+    }
+
     async deleteById(id: string) {
         try {
             var stage = await this.stagemodel.deleteOne({ _id: id })

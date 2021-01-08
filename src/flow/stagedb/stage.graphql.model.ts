@@ -2,27 +2,24 @@ import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import {Task} from './../task/task.graphql.models'
 
 @ObjectType()
-export class Stage{
-    @Field(type => String)
-    _id?: string;
+export class Stage {
+    @Field(type => String, { nullable: false })
+    _id: string;
 
-    @Field(type => [String])
-    tasks: string[];
+    @Field(type => [Task], { nullable: false, description: "list of tasks in the stage" })
+    tasks: Task[];
 
-    @Field(type => [Task])
-    detailTasks?:Task[];
-    
+    @Field(type => String, { nullable: false, description: "provide a unique name" })
+    name?: string;
+
     @Field(type => String)
     createdDate?: string;
 
-    @Field(type => String )
-    name?: string;
+    @Field(type => Boolean, { nullable: true, description: "can the customer skip the flow" })
+    canSkip: boolean;
 
-    @Field(type => Boolean, { nullable: true })
-    canSkip: Boolean;
-
-    @Field(type => Boolean, { nullable: true })
-    hostConsentToProceed: Boolean
+    @Field(type => Boolean, { nullable: true, description: "does it need host Consent To Proceed the flow" })
+    hostConsentToProceed: boolean;
 }
 
 @InputType()
@@ -33,13 +30,10 @@ export class StageInput{
     @Field(type => [String])
     tasks: string[];
 
-    @Field(type => [Task])
-    detailTasks?:Task[];
-    
     @Field(type => String)
     createdDate?: string;
 
-    @Field(type => String )
+    @Field(type => String,{ nullable: false, description: "provide a unique name" } )
     name?: string;
 
     @Field(type => Boolean, { nullable: true })
