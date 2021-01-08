@@ -21,7 +21,7 @@ export class StagedbService {
 
     async getById(id: string): Promise<StageStructure> {
         try {
-            var stage: StageStructure = await this.stagemodel.findById(id)
+            var stage: StageStructure = await this.stagemodel.findById(id).lean()
             return stage
         } catch (error) {
             this.logserv.logm('cant find stage', error)

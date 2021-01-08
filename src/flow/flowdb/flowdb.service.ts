@@ -27,7 +27,7 @@ export class FlowdbService {
 
     async getById(id: string): Promise<FlowStructure> {
         try {
-            var flow: FlowStructure = await this.flowmodel.findById(id)
+            var flow: FlowStructure = await this.flowmodel.findById(id).lean()
             return flow
         } catch (error) {
             console.log('cant find docs')
@@ -40,7 +40,8 @@ export class FlowdbService {
             if (flow != null) {
 
                 const stages = await this.getStagesForFlow(flow)
-                const result = { ...flow.toJSON(), stages }
+                this.logserv.logm(' flow result ', flow)
+                const result = { ...flow, stages }
                 this.logserv.logm('result: api call for flow total', result)
                 return result
             }
@@ -53,9 +54,8 @@ export class FlowdbService {
         return new Promise((resolve, reject) => {
             const stages = []
             flow.stages.forEach(async (stageid, index) => {
-                const stag = await (await this.stagedbServ.getById(stageid))
-                const result = stag.toJSON()
-                stages.push(result);
+                const stag = await (await this.stagedbServ.getTotalById(stageid))
+                stages.push(stag);
                 if (index === flow.stages.length - 1) resolve(stages)
             })
         })
@@ -66,14 +66,14 @@ export class FlowdbService {
             const tasks = []
             tasklist.forEach(async (taskid, index) => {
                 const tsk = await (await this.taskdbServ.getById(taskid))
-                tasks.push(tsk.toJSON())
+                tasks.push(tsk)
                 if (index === tasklist.length - 1) resolve(tasks)
             });
         })
     }
 
     async getTaskById(taskId) {
-        return (await this.taskdbServ.getById(taskId)).toJSON()
+        return (await this.taskdbServ.getById(taskId))
     }
 
     async getAll(): Promise<FlowStructure[]> {
