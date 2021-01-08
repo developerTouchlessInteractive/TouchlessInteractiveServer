@@ -84,6 +84,15 @@ export class FlowdbService {
         }
     }
 
+    async getFlowsWithStage(stageId: String): Promise<FlowStructure[]> {
+        try {
+            const query = { stages: stageId }
+            return await this.flowmodel.find(query)
+        } catch (error) {
+            this.logserv.logm('cant find flows with that stageID', error)
+        }
+    }
+
     async deleteById(id: string) {
         try {
             var flow = await this.flowmodel.deleteOne({ _id: id })

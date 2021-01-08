@@ -25,7 +25,7 @@ export class InteractiveService {
 
     async getDataByPacketId(id: string): Promise<CommunicationStructure> {
         try {
-            var comm: CommunicationStructure = await this.commModel.findById(id)
+            var comm: CommunicationStructure = await this.commModel.findById(id).lean()
             return comm
         } catch (error) {
             console.log('cant find docs')
