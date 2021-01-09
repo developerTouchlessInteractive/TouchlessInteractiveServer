@@ -1,66 +1,66 @@
-import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { Task } from './../task/task.graphql.models'
 
 @ObjectType()
 export class StageDetail {
-    @Field(type => String, { nullable: false })
+    @Field(() => String, { nullable: false })
     _id: string;
 
-    @Field(type => [Task], { nullable: false, description: "list of tasks in the stage" })
+    @Field(() => [Task], { nullable: false, description: "list of tasks in the stage" })
     tasks: Task[];
 
-    @Field(type => String, { nullable: false, description: "provide a unique name" })
+    @Field(() => String, { nullable: false, description: "provide a unique name" })
     name?: string;
 
-    @Field(type => String)
+    @Field(() => String)
     createdDate?: string;
 
-    @Field(type => Boolean, { nullable: true, description: "can the customer skip the flow" })
+    @Field(() => Boolean, { nullable: true, description: "can the customer skip the Stage" })
     canSkip: boolean;
 
-    @Field(type => Boolean, { nullable: true, description: "does it need host Consent To Proceed the flow" })
+    @Field(() => Boolean, { nullable: true, description: "does it need host Consent To Proceed with the Stage" })
     hostConsentToProceed: boolean;
 }
 
 
 @ObjectType()
 export class Stage {
-    @Field(type => String, { nullable: false })
+    @Field(() => String, { nullable: false })
     _id: string;
 
-    @Field(type => [String], { nullable: false, description: "list of tasks ids in the stage" })
+    @Field(() => [String], { nullable: false, description: "list of tasks ids in the stage" })
     tasks: string[];
 
-    @Field(type => String, { nullable: false, description: "provide a unique name" })
+    @Field(() => String, { nullable: false, description: "provide a unique name" })
     name?: string;
 
-    @Field(type => String)
+    @Field(() => String)
     createdDate?: string;
 
-    @Field(type => Boolean, { nullable: true, description: "can the customer skip the flow" })
+    @Field(() => Boolean, { nullable: true, description: "can the customer skip the Stage" })
     canSkip: boolean;
 
-    @Field(type => Boolean, { nullable: true, description: "does it need host Consent To Proceed the flow" })
+    @Field(() => Boolean, { nullable: true, description: "does it need host Consent To Proceed with the Stage" })
     hostConsentToProceed: boolean;
 }
 
 @InputType()
 export class StageInput {
-    @Field(type => String)
+    @Field(() => String)
     _id?: string;
 
-    @Field(type => [String])
+    @Field(() => [String])
     tasks: string[];
 
-    @Field(type => String)
+    @Field(() => String, { nullable: true })
     createdDate?: string;
 
-    @Field(type => String, { nullable: false, description: "provide a unique name" })
+    @Field(() => String, { nullable: false, description: "provide a unique name" })
     name?: string;
 
-    @Field(type => Boolean, { nullable: true })
+    @Field(() => Boolean, { nullable: true })
     canSkip: Boolean;
 
-    @Field(type => Boolean, { nullable: true })
+    @Field(() => Boolean, { nullable: true })
     hostConsentToProceed: Boolean
 }

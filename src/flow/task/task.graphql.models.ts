@@ -1,49 +1,49 @@
-import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class Task {
-    @Field(type => String)
+    @Field(() => String)
     _id: string;
 
-    @Field(type => String)
+    @Field(() => String)
     controllerName?: string;
 
-    @Field(type => String, { nullable: true })
+    @Field(() => String, { nullable: true })
     resource?: string;
 
-    @Field(type => String)
+    @Field(() => String)
     name?: string;
 
-    @Field(type => String)
+    @Field(() => String)
     createdDate?: string;
 
-    @Field(type => String, { nullable: true })
+    @Field(() => String, { nullable: true })
     userInput: string;
 
-    @Field(type => String, { nullable: true })
+    @Field(() => String, { nullable: true })
     UserAction: string;
 }
 
 @InputType()
 export class TaskInput {
-    @Field(type => String)
+    @Field(() => String)
     _id: string;
 
-    @Field(type => String)
+    @Field(() => String)
     controllerName?: string;
 
-    @Field(type => String, { nullable: true })
+    @Field(() => String, { nullable: true })
     resource?: string;
 
-    @Field(type => String)
+    @Field(() => String)
     name?: string;
 
-    @Field(type => String, { nullable: true })
+    @Field(() => String, { nullable: true })
     createdDate?: string;
 
-    @Field(type => String, { nullable: true })
+    @Field(() => String, { nullable: true })
     userInput: string;
 
-    @Field(type => String, { nullable: true })
+    @Field(() => String, { nullable: true })
     UserAction: string;
 }

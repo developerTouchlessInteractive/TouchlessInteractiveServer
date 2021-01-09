@@ -84,7 +84,7 @@ export class FlowdbService {
         }
     }
 
-    async getFlowsWithStage(stageId: String): Promise<FlowStructure[]> {
+    async getFlowsWithStage(stageId: string){
         try {
             const query = { stages: stageId }
             return await this.flowmodel.find(query)
