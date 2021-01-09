@@ -1,6 +1,6 @@
 import { Args, InputType, Mutation, Parent, Query, ResolveField, Resolver, Subscription } from "@nestjs/graphql";
 import { StagedbService } from './stagedb.service'
-import { Stage, StageInput } from './stage.graphql.model'
+import { Stage, StageDetail, StageInput } from './stage.graphql.model'
 
 @Resolver(of => Stage)
 export class StageResolver {
@@ -8,9 +8,9 @@ export class StageResolver {
         private stageDbService: StagedbService
     ) { }
 
-    @Query(returns => Stage, { description: "returns a Stage with a given ID" })
-    async getStageById(@Args('id', { type: () => String }) id: string) {
-        return this.stageDbService.getById(id)
+    @Query(returns => StageDetail, { description: "returns a Stage with a given ID" })
+    async getStageDetailById(@Args('id', { type: () => String }) id: string) {
+        return this.stageDbService.getTotalById(id)
     }
 
     @Query(returns => [Stage], { description: "returns all Stages" })
