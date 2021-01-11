@@ -1,0 +1,150 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Flow {
+  _id: String!
+  createdDate: String!
+
+  """can the host/agent abort the flow"""
+  hostCanAbort: Boolean
+
+  """provide a unique name"""
+  name: String!
+
+  """list of stage ids in the flow"""
+  stages: [String!]!
+}
+
+type FlowDetail {
+  _id: String!
+  createdDate: String!
+
+  """can the host/agent abort the flow"""
+  hostCanAbort: Boolean
+
+  """provide a unique name"""
+  name: String!
+
+  """list of stages in the flow"""
+  stages: [Stage!]!
+}
+
+input FlowInput {
+  _id: String!
+  createdDate: String
+
+  """can the host/agent abort the flow"""
+  hostCanAbort: Boolean
+
+  """provide a unique name"""
+  name: String!
+
+  """list of stage id's"""
+  stages: [String!]!
+}
+
+type Mutation {
+  """creates a Flow and returns the response"""
+  createFlow(
+    """Flow to be created"""
+    Flow: FlowInput!
+  ): Flow!
+
+  """creates a Stage and returns the response"""
+  createStage(Stage: StageInput!): Stage!
+
+  """creates a task and returns the response"""
+  createTask(
+    """task to be created"""
+    task: TaskInput!
+  ): Task!
+}
+
+type Query {
+  """all the Flows(with stage ids array) list"""
+  getAllFlows: [Flow!]!
+
+  """returns all Stages"""
+  getAllStages: [Stage!]!
+
+  """all the tasks list"""
+  getAllTasks: [Task!]!
+
+  """Flow Detail(with stage & task details) for the provided ID"""
+  getFlowById(id: String!): FlowDetail!
+
+  """returns flows containing this stage id"""
+  getFlowsWithStage(id: String!): [Flow!]!
+
+  """returns a Stage with a given ID"""
+  getStageDetailById(id: String!): StageDetail!
+
+  """task for the provided ID"""
+  getTaskById(id: String!): Task!
+}
+
+type Stage {
+  _id: String!
+
+  """can the customer skip the Stage"""
+  canSkip: Boolean
+  createdDate: String!
+
+  """does it need host Consent To Proceed with the Stage"""
+  hostConsentToProceed: Boolean
+
+  """provide a unique name"""
+  name: String!
+
+  """list of tasks ids in the stage"""
+  tasks: [String!]!
+}
+
+type StageDetail {
+  _id: String!
+
+  """can the customer skip the Stage"""
+  canSkip: Boolean
+  createdDate: String!
+
+  """does it need host Consent To Proceed with the Stage"""
+  hostConsentToProceed: Boolean
+
+  """provide a unique name"""
+  name: String!
+
+  """list of tasks in the stage"""
+  tasks: [Task!]!
+}
+
+input StageInput {
+  _id: String!
+  canSkip: Boolean
+  createdDate: String
+  hostConsentToProceed: Boolean
+
+  """provide a unique name"""
+  name: String!
+  tasks: [String!]!
+}
+
+type Task {
+  _id: String!
+  controllerName: String!
+  createdDate: String!
+  name: String!
+  resource: String
+  UserAction: String
+  userInput: String
+}
+
+input TaskInput {
+  _id: String!
+  controllerName: String!
+  createdDate: String
+  name: String!
+  resource: String
+  UserAction: String
+  userInput: String
+}

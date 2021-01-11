@@ -14,6 +14,9 @@ import { RegisterController } from './register/register.controller';
 import { SessiondbService } from './sessiondb/sessiondb.service';
 import { SessionStructure } from './sessionstructure.model';
 import { GlobalModule } from '../global/global.module';
+import { TaskResolver } from './task/task.resolver';
+import { FlowResolver } from './flow/flow.resolver';
+import { StageResolver } from './stagedb/stage.resolver';
 
 @Module({
     imports: [MongooseModule.forFeature([
@@ -25,7 +28,7 @@ import { GlobalModule } from '../global/global.module';
         { name: 'FlowSession', schema: SessionStructure }],
         'sessions'), LoggerModule, GlobalModule],
     controllers: [FlowController, StageController, TaskController, RegisterController],
-    providers: [TaskdbService, FlowdbService, StagedbService, SessiondbService],
+    providers: [TaskdbService, FlowdbService, StagedbService, SessiondbService, TaskResolver, StageResolver, FlowResolver],
     exports: [FlowdbService, StagedbService, TaskdbService, SessiondbService]
 })
 export class FlowModule { }

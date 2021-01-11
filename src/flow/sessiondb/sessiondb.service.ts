@@ -54,7 +54,7 @@ export class SessiondbService {
 
     async updateEventBook(sessionId: string, event: ResponseData) {
         try {
-            var session = await this.flowsessionmodel.findById({ _id: sessionId })
+            var session:SessionStructure = await this.flowsessionmodel.findById({ _id: sessionId }).lean()
             if (!session) return "no session found"
             try {
                 session.eventBook.push(event)
@@ -72,8 +72,6 @@ export class SessiondbService {
         try {
             const code_query = { inviteCode: code, _id: sessionId };
             const session = await this.flowsessionmodel.findOne(code_query);
-
-            // var session = await this.flowsessionmodel.findById({ })
             if (!session) return "no session found"
             try {
                 session.interactBook.push(event)
@@ -90,7 +88,7 @@ export class SessiondbService {
     async updateStateBook(sessionId: string, state: any) {
 
         try {
-            var session = await this.flowsessionmodel.findById({ _id: sessionId })
+            var session: SessionStructure = await this.flowsessionmodel.findById({ _id: sessionId }).lean()
             if (!session) return "no session found"
             try {
                 const statef = state as FlowState

@@ -21,7 +21,7 @@ export class TaskdbService {
 
     async getById(id: string): Promise<TaskStructure> {
         try {
-            var task: TaskStructure = await this.taskmodel.findById(id)
+            var task: TaskStructure = await this.taskmodel.findById(id).lean()
             return task
         } catch (error) {
             console.log('cant find docs')

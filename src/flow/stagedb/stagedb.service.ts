@@ -21,7 +21,7 @@ export class StagedbService {
 
     async getById(id: string): Promise<StageStructure> {
         try {
-            var stage: StageStructure = await this.stagemodel.findById(id)
+            var stage: StageStructure = await this.stagemodel.findById(id).lean()
             return stage
         } catch (error) {
             this.logserv.logm('cant find stage', error)
@@ -34,7 +34,7 @@ export class StagedbService {
             if (stage != null) {
                 const tasks = await this.getTasksForStage(stage.tasks) //tasks for each stage
                 this.logserv.logm('stages', tasks)
-                const result = { ...stage.toJSON(), tasks }
+                const result = { ...stage, tasks }
                 return result
             }
         } catch (error) {
@@ -57,6 +57,14 @@ export class StagedbService {
     async getAll(): Promise<StageStructure[]> {
         try {
             return await this.stagemodel.find()
+        } catch (error) {
+            this.logserv.logm('cant find stages', error)
+        }
+    }
+
+    async getAllStagesWithTasksControllerName(id:string): Promise<StageStructure[]> {
+        try {
+            return await this.stagemodel.find({"tasks.controllerName" :id})
         } catch (error) {
             this.logserv.logm('cant find stages', error)
         }
