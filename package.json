@@ -48,7 +48,7 @@
     "shortid": "^2.2.15",
     "socketio-wildcard": "^2.0.0",
     "swagger-ui-express": "^4.1.4",
-    "ti-framework": "^0.1.0",
+    "ti-framework": "^0.1.4",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
