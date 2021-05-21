@@ -6,6 +6,7 @@ import { SessionStructure } from '../sessionstructure.model';
 import cryptoRandomString = require('crypto-random-string');
 import { CommunicationData, FlowState, ResponseData } from 'ti-framework';
 import * as _ from 'lodash'
+import { query } from 'express';
 
 @Injectable()
 export class SessiondbService {
@@ -54,15 +55,18 @@ export class SessiondbService {
 
     async updateEventBook(sessionId: string, event: ResponseData) {
         try {
-            var session:SessionStructure = await this.flowsessionmodel.findById({ _id: sessionId }).lean()
+            var session: SessionStructure = await this.flowsessionmodel.findById({ _id: sessionId }).lean()
             if (!session) return "no session found"
-            try {
-                session.eventBook.push(event)
-            } catch (error) {
-                this.logserv.logm('error in db', error)
-            }
 
-            return (await session.save())._id
+            const book = session.eventBook ? session.eventBook : []
+            book.push(event)
+            const options = { upsert: false };
+
+            const result = await this.flowsessionmodel.updateOne({ _id: sessionId }, { eventBook: book }, options);
+            if (result.ok != 1) {
+                return false
+            }
+            return true
         } catch (error) {
             return (JSON.stringify(error))
         }
@@ -88,8 +92,10 @@ export class SessiondbService {
     async updateStateBook(sessionId: string, state: any) {
 
         try {
-            var session: SessionStructure = await this.flowsessionmodel.findById({ _id: sessionId }).lean()
+            const code_query = { _id: sessionId };
+            var session: SessionStructure = await this.flowsessionmodel.findById(code_query)
             if (!session) return "no session found"
+            let book = undefined
             try {
                 const statef = state as FlowState
                 const picked = _.pick(statef, ['isCompleted', 'name'])
@@ -99,12 +105,18 @@ export class SessiondbService {
                     "tasks": statef.taskLedger,
                 }
                 const st = { ...st1, ...picked }
-                session.stateBook.push(st)
+                book = session.stateBook ? session.stateBook : []
+                book.push(st)
             } catch (error) {
                 this.logserv.logm('error in db', error)
             }
 
-            return (await session.save())._id
+            const options = { upsert: false };
+            const result = await this.flowsessionmodel.updateOne({ _id: sessionId }, { stateBook: book }, options);
+            if (result.ok != 1) {
+                return false
+            }
+            return true
         } catch (error) {
             return (JSON.stringify(error))
         }

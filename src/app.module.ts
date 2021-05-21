@@ -8,7 +8,7 @@ import { GlobalModule } from './global/global.module';
 import { UtilService } from './util/util.service';
 import { ConfigModule } from '@nestjs/config/dist/config.module';
 import { GraphQLModule } from '@nestjs/graphql';
-import { join } from 'lodash';
+import { TmsprivacyController } from './tmsprivacy/tmsprivacy.controller';
 
 @Module({
   imports: [
@@ -23,13 +23,13 @@ import { join } from 'lodash';
     }),
     GraphQLModule.forRoot({
       include: [FlowModule], //limits resolver search to these modules
-      autoSchemaFile:'src/schema.gql',
+      autoSchemaFile: 'src/schema.gql',
       sortSchema: true,
       debug: true,
       playground: true
     })
   ],
-  controllers: [AppController],
+  controllers: [AppController, TmsprivacyController],
   providers: [AppService, UtilService]
 })
 export class AppModule { }
